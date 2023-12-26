@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/sys?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: abcdefg0+
+  mail:
+    host: smtp.163.com
+    username: 13013060229@163.com
+    password: JYOKZJBHCKICIQDM
+    port: 465
+    properties:
+      from: 13013060229@163.com
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+  data:
+    redis:
+      database: 0
+      host: localhost
+      port: 6379

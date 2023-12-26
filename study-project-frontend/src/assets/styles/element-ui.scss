@@ -1,0 +1,173 @@
+// cover some element-ui styles
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.cell {
+  .el-tag {
+    margin-right: 0px;
+  }
+}
+
+.small-padding {
+  .cell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.fixed-width {
+  .el-button--mini {
+    padding: 7px 10px;
+    width: 60px;
+  }
+}
+
+.status-col {
+  .cell {
+    padding: 0 10px;
+    text-align: center;
+
+    .el-tag {
+      margin-right: 0px;
+    }
+  }
+}
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// refine element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.el-dropdown-menu {
+  a {
+    display: block
+  }
+}
+
+// fix date-picker ui bug in filter-item
+.el-range-editor.el-input__inner {
+  display: inline-flex !important;
+}
+
+// to fix el-date-picker css style
+.el-range-separator {
+  box-sizing: content-box;
+}
+
+.el-menu--collapse
+  > div
+  > .el-submenu
+  > .el-submenu__title
+  .el-submenu__icon-arrow {
+  display: none;
+}
+
+.el-dropdown .el-dropdown-link{
+  color: var(--el-color-primary) !important;
+}
+
+.common-layout {
+  .el-header,
+  .el-footer,
+  .el-main,
+  .el-aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .el-header,
+  .el-footer {
+    background-color: var(--el-color-primary-light-7);
+    color: var(--el-text-color-primary);
+    text-align: center;
+  }
+
+  .el-aside {
+    background-color: #2c3e50; /* Set background color */
+    color: #19b4c2; /* Set text color */
+    width: 200px; /* Set width of the aside */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+    height: 100vh;
+    display: block;
+    flex-direction: column;
+    //flex-basis: auto;
+
+
+    .aside-header {
+      padding: 20px;
+      text-align: center;
+
+      .logo {
+        width: 80px; /* Adjust logo width */
+        height: 80px; /* Adjust logo height */
+        border-radius: 50%; /* Make logo circular */
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 1.2em; /* Adjust header font size */
+      }
+    }
+
+    .menu-items {
+      padding: 20px;
+
+      .el-menu {
+        background-color: transparent; /* Set menu background color */
+        border: none; /* Remove border */
+        color: #ecf0f1; /* Set text color */
+      }
+
+      .el-menu-vertical {
+        border-radius: 5px; /* Add border-radius to the menu */
+      }
+
+      .el-menu-item {
+        padding: 10px 0;
+      }
+
+      i {
+        margin-right: 10px; /* Adjust icon spacing */
+      }
+    }
+  }
+
+  .el-main {
+    background-color: var(--el-color-primary-light-9);
+    color: var(--el-text-color-primary);
+    text-align: center;
+
+    height: 150px;
+  }
+
+}
