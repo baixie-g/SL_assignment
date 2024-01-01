@@ -83,6 +83,31 @@
   box-sizing: content-box;
 }
 
+.el-scrollbar {
+  height: 100%;
+  overflow-y: auto;
+  width: 100%; // 与父组件宽度一致
+  background-color: transparent; // 背景透明
+}
+
+.el-menu {
+  background-color: transparent; // 背景透明
+  //border: 1px solid #ddd; // 边框颜色
+  border-radius: 8px; // 圆角
+}
+
+.el-item {
+  background-color: transparent; // 白底
+  transition: background-color 0.3s; // 添加过渡效果
+  //border: 1px solid #ddd; // 边框颜色
+  border-radius: 8px; // 圆角
+  margin-bottom: 8px; // 项之间的底部间距
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8); // hover时背景半透明
+  }
+
+}
 .el-menu--collapse
   > div
   > .el-submenu
@@ -105,21 +130,54 @@
     align-items: center;
   }
 
-  .el-header,
+
   .el-footer {
-    background-color: var(--el-color-primary-light-7);
-    color: var(--el-text-color-primary);
-    text-align: center;
+    //background-color: var(--el-color-primary-light-7);
+    //color: var(--el-text-color-primary);
+    //text-align: center;
   }
 
-  .el-aside {
-    background-color: #2c3e50; /* Set background color */
-    color: #19b4c2; /* Set text color */
-    width: 200px; /* Set width of the aside */
+  .el-header {
+    background-color: #00000040; /* Set background color */
+    color: #7ef4ff; /* Set text color */
+    backdrop-filter: blur(4px);
+    //width: 180px; /* Set width of the aside */
     overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
-    height: 100vh;
+    display: block;
+    flex-direction: column;//意思是垂直排列?!
+    height: 60px;
+    //width: 100%;
+    //display: flex;
+    align-items: center;
+    //flex-direction: row;
+    //justify-content: center;
+    padding: 0 10px;
+    //margin: 20px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    animation: fade 0.8s;
+
+    //flex-basis: auto;
+  }
+  .el-aside {
+    background-color: #00000040; /* Set background color */
+    color: #7ef4ff; /* Set text color */
+    backdrop-filter: blur(4px);
+    width: 180px; /* Set width of the aside */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
     display: block;
     flex-direction: column;
+    height: 300px;
+    //width: 100%;
+    //display: flex;
+    align-items: center;
+    //flex-direction: row;
+    //justify-content: center;
+    padding: 0 10px;
+    margin: 20px;
+    border-radius: 50px;
+    animation: fade 0.8s;
+
     //flex-basis: auto;
 
 
@@ -138,6 +196,8 @@
         font-size: 1.2em; /* Adjust header font size */
       }
     }
+
+
 
     .menu-items {
       padding: 20px;
@@ -163,11 +223,13 @@
   }
 
   .el-main {
-    background-color: var(--el-color-primary-light-9);
+    //background-color: var(--el-color-primary-light-9);
     color: var(--el-text-color-primary);
+    background-color: #00000040; /* Set background color */
     text-align: center;
-
-    height: 150px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 50px;
   }
 
 }
