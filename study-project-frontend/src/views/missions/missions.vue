@@ -4,22 +4,6 @@
   <div>
     <h1>Missions</h1>
     <div class="map">
-      <!-- 绘制xy坐标系 -->
-      <div class="coordinate-axis">
-        <!-- y轴坐标，代表紧急性 -->
-        <div class="y-axis">
-          <div class="coordinate-label">High</div>
-          <div class="coordinate-label">Medium</div>
-          <div class="coordinate-label">Low</div>
-        </div>
-
-        <!-- x轴坐标，代表重要性 -->
-        <div class="x-axis">
-          <div class="coordinate-label">Low</div>
-          <div class="coordinate-label">Medium</div>
-          <div class="coordinate-label">High</div>
-        </div>
-
         <!-- 显示子组件mission -->
         <div v-for="mission in missions" :key="mission.id" class="mission-item">
           <mission :data="mission" @click="showMissionDetails(mission)"></mission>
@@ -32,7 +16,6 @@
       <h2>Mission Details</h2>
       <mission-details :data="selectedMission" @close="closeMissionDetails"></mission-details>
     </div>
-  </div>
 </template>
 
 <script>

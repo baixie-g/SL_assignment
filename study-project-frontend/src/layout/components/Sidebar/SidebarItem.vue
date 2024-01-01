@@ -131,6 +131,21 @@ export default {
 .item-content {
   padding: 10px;
   font-size: 20px;
-  color: #1ab394;
+  color: #7cf1fc;
+}
+.sidebar-item {
+  margin-bottom: 10px;
+  //border: 1px solid #7cf1fc;
+  border-radius: 5px;
+  background-color: rgba(30, 30, 30, 0.3);
+  padding: 0 1px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: rgba(30, 30, 30, 0.5);
+  }
 }
 </style>

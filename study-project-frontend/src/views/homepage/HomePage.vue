@@ -153,7 +153,7 @@ export default {
 
 .hero-section {
   padding: 80px 20px;
-  background-color: #f4f4f4;
+  background-color: transparent;
 }
 
 .title {
@@ -216,6 +216,7 @@ export default {
   .featured-title {
     font-size: 1.5em;
     margin-bottom: 10px;
+    color: #000000;
   }
 
   .featured-description {
