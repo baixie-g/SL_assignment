@@ -1,3 +1,164 @@
+<!--<script setup>-->
+<!--import { ref } from "vue";-->
+<!--import axios from "axios";-->
+<!--import { useUserStore } from "@/store/modules/user";-->
+<!--const store = useUserStore();-->
+
+<!--const users = store.auth.user.username;-->
+<!--const email = store.auth.user.email;-->
+<!--const avatar = "http://www.w3.org/2000/svg"; // Default avatar-->
+
+<!--const uploadPhoto = () => {-->
+<!--  const fileInput = this.$refs.fileInput;-->
+<!--  fileInput.click();-->
+<!--};-->
+
+<!--const handleImageChange = async (event) => {-->
+<!--  const file = event.target.files[0];-->
+
+<!--  try {-->
+<!--    const formData = new FormData();-->
+<!--    formData.append("file", file);-->
+
+<!--    // Replace 'YOUR_BACKEND_URL' with the actual URL of your Spring Boot backend endpoint-->
+<!--    const response = await axios.post("YOUR_BACKEND_URL/upload", formData, {-->
+<!--      headers: {-->
+<!--        "Content-Type": "multipart/form-data",-->
+<!--      },-->
+<!--    });-->
+
+<!--    // Assuming the backend responds with the new avatar URL-->
+<!--    store.setAvatar(response.data.avatarUrl);-->
+<!--  } catch (error) {-->
+<!--    console.error("Error uploading photo:", error);-->
+<!--  }-->
+<!--};-->
+<!--</script>-->
+
+<!--<template>-->
+<!--  <div class="upload-image">-->
+<!--    <div class="upload-image__container">-->
+<!--      <div class="upload-image__preview">-->
+<!--        <div class="upload-image__preview__image">-->
+<!--          <img :src="previewImage" alt="" />-->
+<!--        </div>-->
+<!--        <div class="upload-image__preview__progress">-->
+<!--          <el-progress-->
+<!--            :percentage="uploadProgress"-->
+<!--            text-inside-->
+<!--            stroke-width="18"-->
+<!--            color="#409EFF"-->
+<!--          />-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="upload-image__upload">-->
+<!--        <el-upload-->
+<!--          class="upload-image__upload__input"-->
+<!--          :action="uploadImage"-->
+<!--          :show-file-list="false"-->
+<!--          :on-change="onFileChange"-->
+<!--        >-->
+<!--          <el-button type="primary" size="small">选择图片</el-button>-->
+<!--        </el-upload>-->
+<!--        <el-button-->
+<!--          class="upload-image__upload__button"-->
+<!--          type="primary"-->
+<!--          size="small"-->
+<!--          :disabled="!selectedFile"-->
+<!--          @click="uploadImage"-->
+<!--        >-->
+<!--          上传图片-->
+<!--        </el-button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="upload-image__list">-->
+<!--      <div class="upload-image__list__item" v-for="image in images" :key="image.id">-->
+<!--        <img :src="image.url" alt="" />-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</template>-->
+
+<!--<style scoped>-->
+<!--.upload-image {-->
+<!--  width: 100%;-->
+<!--  max-width: 800px;-->
+<!--  margin: 0 auto;-->
+<!--}-->
+
+<!--.upload-image__container {-->
+<!--  display: flex;-->
+<!--  flex-direction: column;-->
+<!--  align-items: center;-->
+<!--  justify-content: center;-->
+<!--}-->
+
+<!--.upload-image__preview {-->
+<!--  width: 100%;-->
+<!--  max-width: 400px;-->
+<!--  margin-bottom: 20px;-->
+<!--}-->
+
+<!--.upload-image__preview__image {-->
+<!--  width: 100%;-->
+<!--  height: 0;-->
+<!--  padding-bottom: 100%;-->
+<!--  position: relative;-->
+<!--  overflow: hidden;-->
+<!--}-->
+
+<!--.upload-image__preview__image img {-->
+<!--  position: absolute;-->
+<!--  top: 0;-->
+<!--  left: 0;-->
+<!--  width: 100%;-->
+<!--  height: auto;-->
+<!--  object-fit: cover;-->
+<!--}-->
+
+<!--.upload-image__preview__progress {-->
+<!--  width: 100%;-->
+<!--}-->
+
+<!--.upload-image__upload {-->
+<!--  display: flex;-->
+<!--  align-items: center;-->
+<!--  justify-content: center;-->
+<!--}-->
+
+<!--.upload-image__upload__input {-->
+<!--  margin-right: 10px;-->
+<!--}-->
+
+<!--.upload-image__upload__button {-->
+<!--  margin-left: 10px;-->
+<!--}-->
+
+<!--.upload-image__list {-->
+<!--  display: flex;-->
+<!--  flex-wrap: wrap;-->
+<!--  justify-content: center;-->
+<!--}-->
+
+<!--.upload-image__list__item {-->
+<!--  width: 100px;-->
+<!--  height: 100px;-->
+<!--  margin: 10px;-->
+<!--  overflow: hidden;-->
+<!--  border-radius: 5px;-->
+<!--  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--}-->
+
+<!--.upload-image__list__item img {-->
+<!--  width: 100%;-->
+<!--  height: 100%;-->
+<!--  object-fit: cover;-->
+<!--}-->
+
+
+<!--</style>-->
+
+
 <!--<template>-->
 <!--  <div class="user-profile">-->
 <!--    <div class="avatar-container" @click="uploadPhoto">-->
@@ -152,243 +313,3 @@
 <!--  }-->
 <!--};-->
 <!--</script>-->
-
-
-<!--<template>-->
-<!--  <div>-->
-<!--    <h1>{{ fullName }}</h1>-->
-<!--    <p>{{ bio }}</p>-->
-
-<!--    <section>-->
-<!--      <h2>个人信息</h2>-->
-<!--      <ul>-->
-<!--        <li><strong>年龄：</strong>{{ age }} 岁</li>-->
-<!--        <li><strong>教育：</strong>{{ education }}</li>-->
-<!--        <li><strong>技能：</strong>{{ skills.join(', ') }}</li>-->
-<!--      </ul>-->
-<!--    </section>-->
-
-<!--    <section>-->
-<!--      <h2>工作经验</h2>-->
-<!--      <ul>-->
-<!--        <li v-for="job in workExperience" :key="job.id">-->
-<!--          <strong>{{ job.title }}</strong> - {{ job.company }} ({{ job.year }})-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--    </section>-->
-<!--  </div>-->
-<!--</template>-->
-
-<!--<script>-->
-<!--export default {-->
-<!--  data() {-->
-<!--    return {-->
-<!--      fullName: '你的全名',-->
-<!--      bio: '一段简短的个人简介',-->
-<!--      age: 25,-->
-<!--      education: '你的教育背景',-->
-<!--      skills: ['技能1', '技能2', '技能3'],-->
-<!--      workExperience: [-->
-<!--        { id: 1, title: '前端开发', company: '公司A', year: '2018-2020' },-->
-<!--        { id: 2, title: '全栈工程师', company: '公司B', year: '2020-至今' },-->
-<!--      ],-->
-<!--    };-->
-<!--  },-->
-<!--};-->
-<!--</script>-->
-
-<!--<style scoped>-->
-<!--/* 样式可以根据需要进行修改 */-->
-<!--h1 {-->
-<!--  color: #333;-->
-<!--}-->
-
-<!--p {-->
-<!--  color: #666;-->
-<!--}-->
-
-<!--section {-->
-<!--  margin-bottom: 20px;-->
-<!--}-->
-
-<!--ul {-->
-<!--  list-style-type: none;-->
-<!--  padding: 0;-->
-<!--}-->
-
-<!--li {-->
-<!--  margin-bottom: 5px;-->
-<!--}-->
-<!--</style>-->
-<template>
-  <!-- 基本信息 -->
-  <div class="message">
-    <!-- Logo -->
-    <div class="logo">
-      <img class="logo-img" :src="siteLogo" alt="logo" />
-      <div :class="{ name: true, 'text-hidden': true, long: siteUrl[0].length >= 6 }">
-        <span class="bg">{{ siteUrl }}</span>
-      </div>
-    </div>
-    <!-- 简介 -->
-    <div class="description cards" @click="changeBox">
-      <div class="content">
-        <div class="text">
-          <p>{{ descriptionText.hello }}</p>
-          <p>{{ descriptionText.text }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script setup>
-import { mainStore } from "../../store/";
-import {computed, h, reactive, watch} from "vue";
-import {ElMessage} from "element-plus";
-const store = mainStore();
-
-// 主页站点logo
-const siteLogo = import.meta.env.VITE_SITE_MAIN_LOGO;
-// 站点链接
-const siteUrl = computed(() => {
-  const url = import.meta.env.VITE_SITE_URL;
-
-  return url.split(".");
-});
-
-// 简介区域文字
-const descriptionText = reactive({
-  hello: import.meta.env.VITE_DESC_HELLO,
-  text: import.meta.env.VITE_DESC_TEXT,
-});
-
-// 切换右侧功能区
-const changeBox = () => {
-  if (store.getInnerWidth >= 990) {
-    store.boxOpenState = !store.boxOpenState;
-  } else {
-    ElMessage({
-      message: "当前页面宽度不足以开启盒子",
-      grouping: true,
-      icon: h(Error, {
-        theme: "filled",
-        fill: "#efefef",
-      }),
-    });
-  }
-};
-
-// 监听状态变化
-watch(
-    () => store.boxOpenState,
-    (value) => {
-      if (value) {
-        descriptionText.hello = import.meta.env.VITE_DESC_HELLO_OTHER;
-        descriptionText.text = import.meta.env.VITE_DESC_TEXT_OTHER;
-      } else {
-        descriptionText.hello = import.meta.env.VITE_DESC_HELLO;
-        descriptionText.text = import.meta.env.VITE_DESC_TEXT;
-      }
-    },
-);
-</script>
-
-<style lang="scss" scoped>
-.message {
-  .logo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    animation: fade 0.5s;
-    .logo-img {
-      border-radius: 50%;
-      width: 120px;
-    }
-    .name {
-      width: calc(460px - 120px);
-      padding-left: 22px;
-      transform: translateY(-8px);
-      font-family: "Pacifico-Regular";
-
-      .bg {
-        font-size: 5rem;
-      }
-
-      .sm {
-        margin-left: 6px;
-        font-size: 2rem;
-        @media (min-width: 720px) and (max-width: 789px) {
-          display: none;
-        }
-      }
-    }
-    @media (max-width: 768px) {
-      .logo-img {
-        width: 100px;
-      }
-      .name {
-        height: 128px;
-        .bg {
-          font-size: 4.5rem;
-        }
-      }
-    }
-  }
-
-  .description {
-    padding: 1rem;
-    margin-top: 3.5rem;
-    max-width: 460px;
-    animation: fade 0.5s;
-
-    .content {
-      display: flex;
-      justify-content: space-between;
-
-      .text {
-        margin: 0.75rem 1rem;
-        line-height: 2rem;
-        margin-right: auto;
-
-        p {
-          &:nth-of-type(1) {
-            font-family: "Pacifico-Regular";
-          }
-        }
-      }
-
-      .xicon:nth-of-type(2) {
-        align-self: flex-end;
-      }
-    }
-    @media (max-width: 720px) {
-      max-width: 100%;
-      pointer-events: none;
-    }
-  }
-  @media (max-width: 390px) {
-    .logo {
-      flex-direction: column;
-      .logo-img {
-        display: none;
-      }
-      .name {
-        margin-left: 0;
-        height: auto;
-        transform: none;
-        text-align: center;
-        .bg {
-          font-size: 3.5rem;
-        }
-        .sm {
-          font-size: 1.4rem;
-        }
-      }
-    }
-    .description {
-      margin-top: 2.5rem;
-    }
-  }
-}
-</style>

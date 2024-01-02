@@ -7,7 +7,8 @@ export const mainStore = defineStore("main", {
             imgLoadStatus: false, // 壁纸加载状态
             innerWidth: null, // 当前窗口宽度
 
-            coverType: "0", // 壁纸种类
+            coverTypeUrl: 'https://img.btstu.cn/api/images/5e699639ba333.jpg', // 壁纸种类
+            coverRanUrl: "https://img.btstu.cn/api/images/5e699639ba333.jpg", // 随机壁纸
 
             siteStartShow: false, // 建站日期显示
             musicClick: false, // 音乐链接是否跳转
@@ -85,7 +86,7 @@ export const mainStore = defineStore("main", {
         key: "data",
         storage: window.localStorage,
         paths: [
-            "coverType",
+            "coverTypeUrl",
             "musicVolume",
             "siteStartShow",
             "musicClick",
