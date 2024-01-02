@@ -80,41 +80,6 @@ export default {
   }
 }
 </script>
-<!--<template>-->
-<!--  <div class="home">-->
-<!--    <div class="hero-section">-->
-<!--      <h1 class="title">发现自律之美</h1>-->
-<!--      <p class="subtitle">在有序的日子里，找到时间的奇迹</p>-->
-<!--      <router-link to="/explore" class="explore-button">开始探索</router-link>-->
-<!--    </div>-->
-
-<!--    <div class="featured-section">-->
-<!--      <div class="featured-item">-->
-<!--        <img src="https://up.qqya.com/files/2020/20_1770.jpg" alt="时间管理">-->
-<!--        <div class="text-content">-->
-<!--          <h2 class="featured-title">精致时间管理</h2>-->
-<!--          <p class="featured-description">掌握时间的艺术，提高效率，轻松完成任务。</p>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="featured-item">-->
-<!--        <img src="https://up.qqya.com/files/2020/20_1775.jpg" alt="自律">-->
-<!--        <div class="text-content">-->
-<!--          <h2 class="featured-title">锻炼自律力</h2>-->
-<!--          <p class="featured-description">培养坚定的决心，克服拖延，迈向成功的道路。</p>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="featured-item">-->
-<!--        <img src="https://up.qqya.com/files/2020/20_1771.jpg" alt="任务安排">-->
-<!--        <div class="text-content">-->
-<!--          <h2 class="featured-title">智慧任务安排</h2>-->
-<!--          <p class="featured-description">有效规划，合理安排，轻松迎接每一个挑战。</p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</template>-->
 
 <template>
   <div class="home">
@@ -134,8 +99,6 @@ export default {
             :src="item.image"
             :alt="item.alt"
             class="featured-image"
-            @mouseover="handleMouseOver(index)"
-            @mouseout="handleMouseOut(index)"
         />
         <div class="text-content">
           <h2 class="featured-title">{{ item.title }}</h2>
@@ -163,7 +126,7 @@ export default {
 
 .subtitle {
   font-size: 1.2em;
-  color: #666;
+  color: #ececec;
   margin-bottom: 30px;
 }
 
@@ -202,6 +165,7 @@ export default {
     width: 100%;
     height: auto;
     border-radius: 10px;
+transition: transform 0.3s ease-in-out;
   }
 
   .text-content {

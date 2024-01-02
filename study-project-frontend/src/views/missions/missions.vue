@@ -1,56 +1,25 @@
-<!-- missions.vue -->
-
 <template>
-  <div>
+  <div class="missions-container">
     <h1>Missions</h1>
     <div class="map">
-        <!-- 显示子组件mission -->
-        <div v-for="mission in missions" :key="mission.id" class="mission-item">
-          <mission :data="mission" @click="showMissionDetails(mission)"></mission>
-        </div>
+      <div v-for="mission in missions" :key="mission.id" class="mission-item" @click="showMissionDetails(mission)">
+        <mission :data="mission"></mission>
       </div>
     </div>
 
-    <!-- 显示选定任务的详细信息 -->
-    <div v-if="selectedMission">
-      <h2>Mission Details</h2>
-      <mission-details :data="selectedMission" @close="closeMissionDetails"></mission-details>
-    </div>
+  </div>
+  <mission-details v-if="selectedMission" :data="selectedMission" @close="closeMissionDetails" />
 </template>
 
 <script>
-import Mission from './components/mission.vue'; // 导入子组件
-import MissionDetails from './components/mission-details.vue'; // 导入任务详细信息组件
+import Mission from './components/Mission.vue';
+import MissionDetails from './components/MissionDetails.vue';
+import { fetchMissions } from '@/store/modules/missionsData';
 
 export default {
   data() {
     return {
-      missions: // missions 数据的具体样例
-          [
-            {
-              id: 1,
-              title: '完成项目A',
-              description: '在下个月底之前完成项目A的所有任务',
-              urgency: 'High',
-              importance: 'High',
-            },
-            {
-              id: 2,
-              title: '学习新技能B',
-              description: '每周至少投入5小时学习新技能B',
-              urgency: 'Medium',
-              importance: 'Medium',
-            },
-            {
-              id: 3,
-              title: '健身计划',
-              description: '每周至少进行3次健身活动',
-              urgency: 'Low',
-              importance: 'High',
-            },
-            // 可以根据需要添加更多任务
-          ]
-      ,
+      missions: [],
       selectedMission: null,
     };
   },
@@ -58,7 +27,18 @@ export default {
     Mission,
     MissionDetails,
   },
+  mounted() {
+    this.loadMissions();
+  },
   methods: {
+    async loadMissions() {
+      try {
+        this.missions = await fetchMissions();
+      } catch (error) {
+        console.error('Error loading missions', error);
+        this.missions = [{ id: 1, name: 'Error loading missions' }];
+      }
+    },
     showMissionDetails(mission) {
       this.selectedMission = mission;
     },
@@ -70,33 +50,21 @@ export default {
 </script>
 
 <style scoped>
-/* 样式可以根据需要进行调整 */
-.map{
-  border-color: #1c84c6;
-}
-.coordinate-axis {
-  position: relative;
+.missions-container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.y-axis, .x-axis {
-  position: absolute;
-}
-
-.y-axis {
-  left: 0;
-}
-
-.x-axis {
-  bottom: 0;
-}
-
-.coordinate-label {
-  margin: 5px;
+.map {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .mission-item {
-  position: unset;
-  border-color: #a6157d;
-  color: #1ab394;
+  flex: 0 0 calc(33.3333% - 20px);
+  margin: 10px;
+  cursor: pointer;
 }
+
+/* Add more styling as needed */
 </style>
