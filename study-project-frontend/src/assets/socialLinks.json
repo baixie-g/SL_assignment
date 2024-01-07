@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Github",
+    "icon": "https://www.freeimg.cn/i/2024/01/04/65966aa95fca4.png",
+    "tip": "去 Github 看看",
+    "url": "https://github.com/baixie-g"
+  },
+  {
+    "name": "BiliBili",
+    "icon": "https://www.freeimg.cn/i/2024/01/04/65966aa8ebdf1.png",
+    "tip": "(゜-゜)つロ 干杯 ~",
+    "url": "https://space.bilibili.com/351224620"
+  },
+  {
+    "name": "QQ",
+    "icon": "https://www.freeimg.cn/i/2024/01/04/65966aa946c21.png",
+    "tip": " Q我一下 ~",
+    "url": "https://res.abeim.cn/api/qq/?qq=1539250352"
+  },
+  {
+    "name": "Email",
+    "icon": "https://www.freeimg.cn/i/2024/01/04/65966aa92cd75.png",
+    "tip": "来封 Email ~",
+    "url": "mailto:2039279630@qq.com?subject=The%20subject%20of%20the%20mail&body=The%20content%20of%20the%20mail"
+  }
+]

@@ -1,73 +1,60 @@
 <template>
-    <el-row>
-      <el-col :span="24">
-        <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>任务列表</span>
-            <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
-          </div>
-          <el-table :data="taskList" border style="width: 100%">
-            <el-table-column prop="id" label="ID" width="80"></el-table-column>
-            <el-table-column prop="name" label="任务名称"></el-table-column>
-            <el-table-column prop="status" label="状态">
-              <template v-slot="scope">
-                <el-tag :type="scope.row.status === 'completed' ? 'success' : 'info'">
-                  {{ scope.row.status }}
-                </el-tag>
-              </template>
-            </el-table-column>
-            <el-table-column prop="deadline" label="截止日期" width="180">
-              <template v-slot="scope">
-                {{ scope.row.deadline | formatDate }}
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-card>
-      </el-col>
-    </el-row>
+  <div class="task-list">
+    <div v-for="(task, index) in tasks" :key="index" class="task-module">
+      <h3>{{ task.name }}</h3>
+      <el-progress
+          type="dashboard"
+          :percentage="task.percentage"
+          :color="task.color"
+      />
+      <div>
+        <el-button-group>
+          <el-button :icon="Minus" @click="decrease(task)" />
+          <el-button :icon="Plus" @click="increase(task)" />
+        </el-button-group>
+      </div>
+    </div>
+  </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      taskList: [],
-    };
-  },
-  created() {
-    this.generateTaskList();
-  },
-  methods: {
-    generateTaskList() {
-      // 模拟随机生成任务数据
-      for (let i = 1; i <= 10; i++) {
-        this.taskList.push({
-          id: i,
-          name: `任务 ${i}`,
-          status: Math.random() > 0.5 ? 'completed' : 'pending',
-          deadline: this.generateRandomDate(),
-        });
-      }
-    },
-    generateRandomDate() {
-      const currentDate = new Date();
-      const randomDays = Math.floor(Math.random() * 10) + 1;
-      const deadline = new Date(currentDate);
-      deadline.setDate(currentDate.getDate() + randomDays);
-      return deadline.toISOString().split('T')[0];
-    },
-  },
-  filters: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'short', day: 'numeric' };
-      return new Date(date).toLocaleDateString('en-US', options);
-    },
-  },
-};
+<script setup>
+import { ref } from 'vue'
+import { Minus, Plus } from '@element-plus/icons-vue'
+
+const tasks = ref([
+  { name: '登录认证记录', percentage: 10, color: '#f56c6c' },
+  { name: '后端用户分发', percentage: 0, color: '#e6a23c' },
+  { name: 'mysql设计', percentage: 20, color: '#5cb87a' },
+  { name: '向后存储实现', percentage: 30, color: '#1989fa' },
+])
+
+const increase = (task) => {
+  task.percentage += 10
+  if (task.percentage > 100) {
+    task.percentage = 100
+  }
+}
+
+const decrease = (task) => {
+  task.percentage -= 10
+  if (task.percentage < 0) {
+    task.percentage = 0
+  }
+}
 </script>
 
 <style scoped>
-.box-card {
-  margin-top: 10px;
+.task-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 100px;
+}
+
+.task-module {
+  margin: 10px;
+  width: 300px;
+}
+.task-module h3 {
+  margin-bottom: 10px;
 }
 </style>
